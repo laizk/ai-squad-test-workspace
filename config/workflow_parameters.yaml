@@ -1,0 +1,24 @@
+workflow:
+  id: "07fef1c3"
+  name: "full_sequential_validation"
+  
+parameters:
+  batch_size: 1000
+  timeout_seconds: 3600
+  retry_count: 3
+  parallelism: 4
+  
+validation:
+  baseline_version: "v2.1.0"
+  metrics_thresholds:
+    latency_p99_ms: 500
+    error_rate_percent: 0.1
+    throughput_per_sec: 100
+  
+  sla:
+    max_duration_minutes: 60
+    min_throughput: 50
+    max_latency_ms: 1000
+  
+  locked: true
+  validated: true

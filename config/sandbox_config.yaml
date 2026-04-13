@@ -1,0 +1,27 @@
+environment:
+  name: validation-sandbox
+  version: "1.0.0"
+  role: devops
+  
+security:
+  network_rules:
+    - name: allow-internal
+      source: "10.0.0.0/8"
+      destination: "*"
+      port_range: "8080-8443"
+      protocol: "TCP"
+      action: allow
+    - name: allow-external-api
+      source: "*"
+      destination: "api.internal"
+      port_range: "443"
+      protocol: "TCP"
+      action: allow
+  
+resources:
+  cpu_cores: 4
+  memory_gb: 8
+  storage_gb: 100
+  
+status: deployed
+validated: true
